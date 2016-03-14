@@ -1,0 +1,44 @@
+//
+//  TRSDefine.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/8.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+/*********************************************************************/
+
+/*
+* 本地JSON文件数据
+*
+*/
+
+//程序主框架数据地址
+public let KURLAPPLayout       = "file://layout_top.json"
+
+//左侧菜单栏目地址
+public let URLLayoutSideBarL   = "file://左侧边栏.json"
+
+//右侧菜单栏目地址
+public let URLLayoutSideBarR   = "file://layout_sideR.json"
+
+
+/*********************************************************************/
+
+/*
+*   APP 数据接口
+*
+*/
+
+public let KURLRoot             = "http://c.m.163.com/"
+
+public let KURLAppHeadLine        =  KURLRoot + "nc/article/headline/T1348647853363/0-20.html"
+
+//public let KURLAppHomeNews      =  "http://apis.baidu.com/showapi_open_bus/channel_news/search_news"
+
+public let KURLAppMedia           =  KURLRoot + "nc/video/home/0-10.html"
+
+
+/*********************************************************************/

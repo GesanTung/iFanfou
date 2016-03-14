@@ -1,0 +1,54 @@
+//
+//  UIMineViewController.swift
+//  GTMobile
+//
+//  Created by tung on 16/2/29.
+//  Copyright © 2016年 GT. All rights reserved.
+//
+
+import UIKit
+
+class UIMineViewController: BaseViewController {
+
+    @IBOutlet weak var gViewIcon: UIImageView!
+    
+    @IBOutlet weak var gViewDes: UILabel!
+    
+    @IBOutlet weak var gViewBgImage: UIImageView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setNavBarButton(NAV.RIGHT, string:"设置")
+        setNavTitle("我")
+        // Do any additional setup after loading the view.
+        self.HttpGet(KURLAppAccountInfo)
+    }
+    
+    override func updateView(data: AnyObject) {
+        gViewIcon.kf_setImageWithURL(NSURL(string: data["profile_image_url"] as! String)!, placeholderImage: UIImage(named: "placeholder"))
+        gViewBgImage.kf_setImageWithURL(NSURL(string: data["profile_background_image_url"] as! String)!, placeholderImage: UIImage(named: "placeholder"))
+        gViewIcon.layer.cornerRadius = 40
+        gViewIcon.layer.masksToBounds = true
+        gViewDes.text = data["description"] as? String
+    }
+    
+    override func httpRequestSsuccess(url: String,data:NSDictionary,status:HTTPStatus){
+        updateView(data)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

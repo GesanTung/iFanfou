@@ -1,0 +1,35 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "278607a3-320e-4b83-8d57-988bfba7dd81++505" : {
+
+    },
+    "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "278607a3-320e-4b83-8d57-988bfba7dd81++505" : 0,
+    "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4717BCE8-DEE6-4EDB-B2A7-A97E8424762B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "278607a3-320e-4b83-8d57-988bfba7dd81++505" : "iphoenix%20\/",
+    "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : "ifanfou\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TRSMobile",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TRSMobile.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/603482184%40qq.com@code.taobao.org\/svn\/fanfou",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/603482184%40qq.com@code.taobao.org\/svn\/iphoenix",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "278607a3-320e-4b83-8d57-988bfba7dd81++505"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+//
+//  LeftViewController.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/20.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class LeftViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.orangeColor()
+    }
+}

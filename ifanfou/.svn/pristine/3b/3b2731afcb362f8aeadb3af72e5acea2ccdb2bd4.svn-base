@@ -1,0 +1,38 @@
+//
+//  UIDetailVController.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/15.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class UIDetailVController: BaseViewController {
+    var gViewContent = UIScrollView()
+    var gViewDetail:UIDetailContentView?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    override func initContentView() {
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        setNavBarButton(NAV.LEFT, string:"返回")
+        setNavBarButton(NAV.RIGHT, string:"取消关注")
+        setNavTitle("详情")
+        
+        gViewContent.frame = CGRectMake(0, 64, KScreenWidth, KScreenHeight-64-50)
+        self.view.addSubview(gViewContent)
+        
+        gViewDetail = UIDetailContentView()
+        gViewDetail?.frame = CGRectMake(0, 0, KScreenWidth, gViewContent.h)
+        gViewDetail?.gDict = gDict
+        gViewContent.addSubview(gViewDetail!)
+        let height = (gViewDetail?.h>gViewContent.h) ? gViewDetail?.h:(gViewContent.h+30)
+        gViewContent.contentSize = CGSizeMake(KScreenWidth,height! )
+        
+        let v = UIDetailToolView.viewWithXib()
+        v.frame = CGRectMake(0, KScreenHeight-50, KScreenWidth, 50)
+        self.view.addSubview(v)
+    }
+}

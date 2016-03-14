@@ -1,0 +1,51 @@
+//
+//  NewsCellView.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/12.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class FanFouCellView: BaseTableViewCell {
+
+    @IBOutlet weak var gViewTitle: UILabel!
+    
+    @IBOutlet weak var gViewImage: UIImageView!
+    
+    @IBOutlet weak var gViewUserName: UILabel!
+    
+    @IBOutlet weak var gViewTime: UILabel!
+    
+    @IBOutlet weak var gViewSource: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        gViewImage.layer.cornerRadius = CGRectGetHeight(gViewImage.frame)/2
+        gViewImage.layer.masksToBounds = true
+    }
+    
+    override func initCellView(){
+        let image = gDict.valueForKeyPath("user.profile_image_url") as! String
+        gViewImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named: "placeholder"))
+        gViewTitle.text =  gDict.valueForKeyPath("text") as? String
+        gViewUserName.text =  gDict.valueForKeyPath("user.name") as? String
+        
+//        NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
+//        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+//        NSDate *localDate = [dateFormatter dateFromString:@"2013-08-03T04:56:52+0000"]
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+        let time = gDict.valueForKeyPath("created_at") as! String
+        let date = dateFormatter.dateFromString(time)!
+        gViewTime.text = NSDate.since(date)
+        
+    }
+    
+    override class func height(dict:AnyObject) -> CGFloat{
+        return 90;
+    }
+    
+}

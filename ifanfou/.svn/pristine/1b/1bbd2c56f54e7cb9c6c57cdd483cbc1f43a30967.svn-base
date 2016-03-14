@@ -1,0 +1,13 @@
+//
+//  BaseAction.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/19.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import Foundation
+
+class BaseAction: NSObject {
+
+}

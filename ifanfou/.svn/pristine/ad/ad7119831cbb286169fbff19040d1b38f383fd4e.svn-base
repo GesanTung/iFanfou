@@ -1,0 +1,72 @@
+//
+//  UIUploadViewController.swift
+//  TRSMobile
+//
+//  Created by tung on 16/2/25.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class UIUploadViewController: BaseViewController {
+    
+    var actionSheet:ZLPhotoActionSheet?
+    
+    @IBOutlet weak var gViewPhoto: UIImageView!
+    
+    @IBOutlet weak var gViewText: UITextView!
+    @IBOutlet weak var gViewTextContent: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
+        setNavBarButton(NAV.LEFT, string:"取消")
+        setNavBarButton(NAV.RIGHT, string:"发送")
+        setNavTitle("饭一下")
+        
+        actionSheet = ZLPhotoActionSheet()
+        actionSheet!.maxSelectCount = 1
+        actionSheet!.maxPreviewCount = 20
+        
+        //self.automaticallyAdjustsScrollViewInsets = false
+        gViewTextContent.layer.borderColor = UIColor.lightGrayColor().CGColor
+        gViewTextContent.layer.cornerRadius = 5
+        gViewTextContent.layer.borderWidth = 0.5
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func photoClick(sender: AnyObject) {
+        weak var weakSelf = self
+        actionSheet?.showWithSender(self, animate: true, completion: { (selectPhotos) -> Void in
+            weakSelf?.gViewPhoto.image = selectPhotos.first
+        })
+    }
+    
+    override func rightButtonTouch(){
+        if let text = gViewText.text {
+           HttpUpload(KURLAppUpLoad, parameter: ["status":text])
+        }
+    }
+    
+    override func httpRequestSsuccess(url: String,data:NSDictionary,status:HTTPStatus){
+        if let img = data["id"]{
+            tprint(img)
+            navigationController?.popViewControllerAnimated(true)
+        }
+        if  let error = data["error"]{
+            tprint(error)
+            let alertView = UIAlertView()
+            alertView.title = "系统提示"
+            alertView.message = error as? String
+            alertView.addButtonWithTitle("确定")
+            alertView.cancelButtonIndex=0
+            alertView.show()
+        }
+    }
+
+}

@@ -1,0 +1,13 @@
+//
+//  UIDetailVController.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/15.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class UIDetailVController: BaseViewController {
+
+}

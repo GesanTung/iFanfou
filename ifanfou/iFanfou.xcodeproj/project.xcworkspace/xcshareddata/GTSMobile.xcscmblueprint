@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "61B1B4F7-653B-490F-91DE-E089331A9BF5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : "ifanfou\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GTSMobile",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GTSMobile.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/603482184%40qq.com@code.taobao.org\/svn\/fanfou",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505"
+    }
+  ]
+}

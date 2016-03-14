@@ -1,0 +1,61 @@
+//
+//  UIUploadViewController.swift
+//  TRSMobile
+//
+//  Created by tung on 16/2/25.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class UIUploadViewController: BaseViewController {
+    
+    var actionSheet:ZLPhotoActionSheet?
+    
+    @IBOutlet weak var gViewPhoto: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setNavBarButton(NAV.LEFT, string:"取消")
+        setNavBarButton(NAV.RIGHT, string:"发送")
+        setNavTitle("饭一下")
+        
+        actionSheet = ZLPhotoActionSheet()
+        actionSheet!.maxSelectCount = 1
+        actionSheet!.maxPreviewCount = 20
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func photoClick(sender: AnyObject) {
+        weak var weakSelf = self
+        actionSheet?.showWithSender(self, animate: true, completion: { (selectPhotos) -> Void in
+            weakSelf?.gViewPhoto.image = selectPhotos.first
+        })
+    }
+    
+    override func rightButtonTouch(){
+        
+        HttpUpload(KURLAppUpLoad, parameter: ["status":"test000s1"])
+    }
+    
+    override func httpRequestSsuccess(url: String,data:NSDictionary,status:HTTPStatus){
+    
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

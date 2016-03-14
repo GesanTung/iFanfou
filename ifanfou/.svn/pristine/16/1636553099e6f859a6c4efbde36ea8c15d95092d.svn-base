@@ -1,0 +1,22 @@
+//
+//  UIDetailVController.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/15.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class UIDetailVController: BaseViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func initContentView() {
+        
+        setNavBarButton(NAV.LEFT, string:"返回")
+        setNavBarButton(NAV.RIGHT, string:"取消关注")
+        setNavTitle("详情")
+    }
+}

@@ -1,0 +1,165 @@
+//
+//  BaseNetServer.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/8.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+import Alamofire
+
+public enum HTTPStatus : Int {
+    case HTTPStatusNormal
+    case HTTPStatuSsuccess
+    case HTTPStatuSNoNetWork
+    case HTTPStatuSUrlError
+    case HTTPStatuSCache
+    case HTTPStatusFailed
+}
+//MARK: protocol
+/**
+the request delegate callback
+*/
+public protocol BaseNetServerDelegate  {
+    func httpRequestSsuccess(url: String,data:NSDictionary,status:HTTPStatus)
+}
+
+/**
+ make BaseNetServer callback method optional
+ */
+public  extension BaseNetServerDelegate {
+    func httpRequestSsuccess(url: String,data:NSDictionary,status:HTTPStatus) {
+        
+    }
+}
+
+class BaseNetService: NSObject {
+    internal var delegate: BaseNetServerDelegate?
+    
+    func HttpGet(url:String){
+        if url .hasPrefix("file://"){
+           getFromLocalFile(url)
+        }else{
+           self.HttpGet(url, parameter: nil)
+        }
+    
+    }
+    
+    /**
+     *   get方式获取数据
+     *   url : 请求地址
+     *   params : 传入参数
+     */
+    func HttpGet(url:String,parameter:[String : AnyObject]?){
+        let httpUrl : String = url
+        weak var weakSelf = self
+        let header = FanFouAuthManger.getFanFouHeader(url,parameters: parameter)
+        if let parameters = parameter {
+            Alamofire.request(.GET, httpUrl, parameters: parameters , encoding: .JSON, headers: header).responseJSON(completionHandler: { (response) -> Void in
+                if let JSON = response.result.value {
+                   weakSelf!.delegate?.httpRequestSsuccess(httpUrl,data:JSON as! NSDictionary,status:HTTPStatus.HTTPStatuSsuccess)
+                }
+            })
+        }else {
+            Alamofire.request(.GET, httpUrl, headers: header).progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) -> Void in
+                
+            }).responseJSON { (response) -> Void in
+                if let JSON = response.result.value {
+                   weakSelf!.delegate?.httpRequestSsuccess(httpUrl,data:JSON as! NSDictionary,status:HTTPStatus.HTTPStatuSsuccess)
+                }
+            }
+        }
+    }
+    
+    /**
+     *   post方式获取数据
+     *   url : 请求地址
+     *   params : 传入参数
+     */
+    func HttpPost(url:String,parameter:[String : AnyObject]?){
+        let httpUrl : String = url
+        weak var tmpSelf = self
+        let header = FanFouAuthManger.getFanFouHeader(url,method:.POST)
+        if let parameters = parameter {
+            Alamofire.request(.POST, httpUrl, parameters: parameters, encoding: .JSON, headers: header).responseJSON(completionHandler: { (response) -> Void in
+                if let JSON = response.result.value {
+                   tmpSelf!.delegate?.httpRequestSsuccess(httpUrl,data:JSON as! NSDictionary,status:HTTPStatus.HTTPStatuSsuccess)
+                }
+            })
+        }else {
+            Alamofire.request(.POST, httpUrl,headers: header).responseJSON { (response) -> Void in
+                if let JSON = response.result.value {
+                   tmpSelf!.delegate?.httpRequestSsuccess(httpUrl,data:JSON as! NSDictionary,status:HTTPStatus.HTTPStatuSsuccess)
+                }
+            }
+        }
+    }
+    
+    /**
+     *   upload方式上传数据
+     *   url : 请求地址
+     *   params : 传入参数
+     */
+    func HttpUpload(url:String,parameter:[String : AnyObject]?){
+        let httpUrl : String = url
+        weak var tmpSelf = self
+        let header = FanFouAuthManger.getFanFouHeader(url,method: .POST)
+        Alamofire.upload(
+            .POST,
+            httpUrl,
+            headers: header,
+            multipartFormData: { multipartFormData in
+                if let lparameters = parameter{
+                    for item in lparameters.keys{
+                        if lparameters[item] is UIImage {
+                            let data = UIImageJPEGRepresentation((lparameters[item]as? UIImage)!,0.6)!
+                            //let data = UIImagePNGRepresentation((lparameters[item]as? UIImage)!)!
+                            multipartFormData.appendBodyPart(data: data, name: String(item), fileName: String(item),mimeType:"application/octet-stream")
+                        }else{
+                           multipartFormData.appendBodyPart(data: lparameters[item]!.dataUsingEncoding(NSUTF8StringEncoding)!, name: String(item),mimeType:"text/plain")
+                        }
+                    }
+                }
+            },
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        if let JSON = response.result.value {
+                            tmpSelf!.delegate?.httpRequestSsuccess(httpUrl,data:JSON as! NSDictionary,status:HTTPStatus.HTTPStatuSsuccess)
+                        }
+                    }
+                case .Failure(let encodingError):
+                    print(encodingError)
+                    tmpSelf!.delegate?.httpRequestSsuccess(httpUrl,data:encodingError as! NSDictionary,status:HTTPStatus.HTTPStatusFailed)
+                }
+            }
+        )
+    }
+    
+    func getFromLocalFile(var file:String){
+        file = file.stringByReplacingOccurrencesOfString("file://", withString: "")
+        file = NSBundle.mainBundle().pathForResource(file, ofType: "")!
+        if file.isEmpty {
+           tprint("读取错误:文件不存在")
+        }
+        let json = NSData(contentsOfFile:file);
+        
+        do {
+            let JSON = try NSJSONSerialization.JSONObjectWithData(json!, options:NSJSONReadingOptions(rawValue: 0))
+            guard let JSONDictionary :NSDictionary = JSON as? NSDictionary else {
+                tprint("Not a Dictionary")
+                // put in function
+                return
+            }
+            delegate?.httpRequestSsuccess(file,data:JSONDictionary,status:HTTPStatus.HTTPStatuSsuccess)
+            tprint("JSONDictionary! \(JSONDictionary)")
+        }
+        catch let JSONError as NSError {
+            tprint("\(JSONError)")
+        }
+        
+    }
+}

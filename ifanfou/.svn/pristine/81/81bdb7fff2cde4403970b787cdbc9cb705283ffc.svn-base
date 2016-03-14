@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIUploadViewController" customModule="TRSMobile" customModuleProvider="target">
+            <connections>
+                <outlet property="gViewText" destination="Wdc-Pe-1VK" id="mno-r2-Zvp"/>
+                <outlet property="gViewTextContent" destination="BRb-Xb-C7g" id="pbb-4p-b7y"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-Xb-C7g">
+                    <rect key="frame" x="10" y="72" width="300" height="120"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wdc-Pe-1VK">
+                            <rect key="frame" x="8" y="8" width="284" height="99"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Wdc-Pe-1VK" firstAttribute="top" secondItem="BRb-Xb-C7g" secondAttribute="top" constant="8" id="01D-BN-aGO"/>
+                        <constraint firstAttribute="trailing" secondItem="Wdc-Pe-1VK" secondAttribute="trailing" constant="8" id="0JQ-T4-2v4"/>
+                        <constraint firstAttribute="bottom" secondItem="Wdc-Pe-1VK" secondAttribute="bottom" constant="13" id="TRn-mC-H7T"/>
+                        <constraint firstAttribute="height" constant="120" id="bIm-TU-Gpe"/>
+                        <constraint firstItem="Wdc-Pe-1VK" firstAttribute="leading" secondItem="BRb-Xb-C7g" secondAttribute="leading" constant="8" id="iwk-T3-Zna"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lg1-TM-RgL">
+                    <rect key="frame" x="45" y="240" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="photoClick:" destination="-1" eventType="touchUpInside" id="3Z2-m0-XW8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="BRb-Xb-C7g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="EsS-Qj-l9j"/>
+                <constraint firstItem="BRb-Xb-C7g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="Jwu-YV-cfh"/>
+                <constraint firstAttribute="trailing" secondItem="BRb-Xb-C7g" secondAttribute="trailing" constant="10" id="thA-fZ-06j"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="261" y="433"/>
+        </view>
+    </objects>
+</document>

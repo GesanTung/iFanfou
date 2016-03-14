@@ -1,0 +1,50 @@
+//
+//  Extend+NSDate.swift
+//  TRSMobile
+//
+//  Created by tung on 16/2/23.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import Foundation
+
+extension NSDate{
+    
+    class func since(date:NSDate) -> String {
+        let seconds = abs(NSDate().timeIntervalSince1970 - date.timeIntervalSince1970)
+        if seconds <= 120 {
+            return "刚刚"
+        }
+        let minutes = Int(floor(seconds / 60))
+        if minutes <= 60 {
+            return "\(minutes)分钟前"
+        }
+        let hours = minutes / 60
+        if hours <= 24 {
+            return "\(hours)小时前"
+        }
+        if hours <= 48 {
+            return "昨天"
+        }
+        let days = hours / 24
+        if days <= 30 {
+            return "\(days)天前"
+        }
+        if days <= 14 {
+            return "上周"
+        }
+        let months = days / 30
+        if months == 1 {
+            return "上个月"
+        }
+        if months <= 12 {
+            return "\(months)几月前"
+        }
+        let years = months / 12
+        if years == 1 {
+            return "去年"
+        }
+        return "\(years)几年前"
+    }
+
+}

@@ -1,0 +1,102 @@
+//
+//  NewsCellView.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/12.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+var hrefRegex :NSRegularExpression?
+var textRegex :NSRegularExpression?
+
+
+
+class FanFouCellView: BaseTableViewCell {
+
+    @IBOutlet weak var gViewTitle: UILabel!
+    
+    @IBOutlet weak var gViewImage: UIImageView!
+    
+    @IBOutlet weak var gViewUserName: UILabel!
+    
+    @IBOutlet weak var gViewTime: UILabel!
+    
+    @IBOutlet weak var gViewSource: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        gViewImage.layer.cornerRadius = CGRectGetHeight(gViewImage.frame)/2
+        gViewImage.layer.masksToBounds = true
+    }
+    
+    override func initCellView(){
+        let image = gDict.valueForKeyPath("user.profile_image_url") as! String
+        gViewImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named: "placeholder"))
+        gViewTitle.text =  gDict.valueForKeyPath("text") as? String
+        gViewUserName.text =  gDict.valueForKeyPath("user.name") as? String
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+        let time = gDict.valueForKeyPath("created_at") as! String
+        let date = dateFormatter.dateFromString(time)!
+        gViewTime.text = NSDate.since(date)
+        
+        gViewSource.text = getSource(gDict.valueForKeyPath("source") as! String)
+        gViewTitle.text =  getText(gDict)
+    }
+    
+    // 来自 XXX
+    
+    func getSource(obj:String)->String{
+       let source = obj
+        // <a href="sinaweibo://customweibosource" rel="nofollow">iPhone 5siPhone 5s</a>
+        
+        if hrefRegex == nil || textRegex == nil {
+            do {
+                try textRegex = NSRegularExpression(pattern: "(?<=>).+(?=<)", options: NSRegularExpressionOptions.AllowCommentsAndWhitespace)
+            }catch{}
+        }
+        
+        var lText :String?
+        let textResult = textRegex!.firstMatchInString(source , options: NSMatchingOptions.init(rawValue: 0), range: NSMakeRange(0, source.startIndex.distanceTo(source.endIndex)))
+        if  textResult != nil && textResult?.range.location != NSNotFound
+        {
+            let textRange = Range(start: source.startIndex.advancedBy(textResult!.range.location), end: source.startIndex.advancedBy(textResult!.range.location + textResult!.range.length))
+            lText = source.substringWithRange(textRange)
+        }
+        if lText==nil {lText = "网页"}
+        return lText!
+    }
+    
+    func getText(obj:AnyObject)->String{
+        var source = gDict.valueForKeyPath("text") as! String
+        // <a href="sinaweibo://customweibosource" rel="nofollow">iPhone 5siPhone 5s</a>
+        
+        if hrefRegex == nil || textRegex == nil {
+            do {
+                try textRegex = NSRegularExpression(pattern: "<a[^>]+>([^<]+)</a>", options: NSRegularExpressionOptions.AllowCommentsAndWhitespace)
+            }catch{}
+        }
+        
+        var lArray:[String]=[]
+        textRegex?.enumerateMatchesInString(source, options: NSMatchingOptions.init(rawValue: 0), range: NSMakeRange(0,source.startIndex.distanceTo(source.endIndex))) {
+            textResult, flags, stop in
+            let textRange = Range(start: source.startIndex.advancedBy(textResult!.range.location), end: source.startIndex.advancedBy(textResult!.range.location + textResult!.range.length))
+            let tempText = source.substringWithRange(textRange)
+            lArray.append(tempText);
+        }
+        
+        for item in lArray {
+           source = source.stringByReplacingOccurrencesOfString(item, withString: getSource(source))
+        }
+        
+        return source
+    }
+
+    override class func height(dict:AnyObject) -> CGFloat{
+        return 90;
+    }
+
+}

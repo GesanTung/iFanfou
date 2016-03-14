@@ -1,0 +1,54 @@
+//
+//  BaseButton.swift
+//  GTMobile
+//
+//  Created by tung on 16/1/8.
+//  Copyright © 2016年 GT. All rights reserved.
+//
+
+import UIKit
+
+public enum ActionStatus : Int {
+    case ActionNomal
+    case ActionDoing
+    case ActionDone
+}
+
+class BaseButton: UIButton {
+
+    var status:ActionStatus = .ActionNomal
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        self.addTarget()
+    }
+    
+    func addTarget(){
+        self.addTarget(self, action: Selector("didTouchUpInside:"), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func didTouchUpInside(btn:BaseButton){
+        
+        self.status = .ActionDoing
+        var selector = NSSelectorFromString("handleBtnAction:");
+        for (var next = self.superview; (next != nil); next = next!.superview) {
+            if (next!.respondsToSelector(selector)) {
+               next?.performSelector(selector, withObject: self)
+               self.status = .ActionDone
+            }
+        }
+        if (self.status == .ActionDoing) {
+            selector = NSSelectorFromString("handleBtnAction:btn:");
+            for (var next = self.superview; (next != nil); next = next!.superview) {
+                let nextResponder = next!.nextResponder
+                if (nextResponder()!.respondsToSelector(selector)) {
+                    nextResponder()!.performSelector(selector, withObject: self)
+                    self.status = .ActionDone
+                }
+            }
+        
+        }
+    }
+
+}

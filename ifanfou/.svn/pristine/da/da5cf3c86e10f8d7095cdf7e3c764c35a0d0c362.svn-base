@@ -1,0 +1,30 @@
+//
+//  NewsCellView.swift
+//  TRSMobile
+//
+//  Created by tung on 16/1/12.
+//  Copyright © 2016年 trs. All rights reserved.
+//
+
+import UIKit
+
+class NewsCellView: BaseTableViewCell {
+
+    @IBOutlet weak var gViewTitle: UILabel!
+    
+    @IBOutlet weak var gViewImage: UIImageView!
+    
+    @IBOutlet weak var gViewTime: UILabel!
+    
+    @IBOutlet weak var gViewSource: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override class func height(dict:AnyObject) -> CGFloat{
+        return 80;
+    }
+    
+}

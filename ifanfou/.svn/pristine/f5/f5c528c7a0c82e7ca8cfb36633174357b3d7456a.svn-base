@@ -1,0 +1,60 @@
+//
+//  GTDefine.swift
+//  GTMobile
+//
+//  Created by tung on 16/1/8.
+//  Copyright © 2016年 GT. All rights reserved.
+//
+
+import UIKit
+
+/*********************************************************************/
+
+/*
+* 本地JSON文件数据
+*
+*/
+
+//程序主框架数据地址
+public let KURLAPPLayout       = "file://layout_top.json"
+
+//左侧菜单栏目地址
+public let URLLayoutSideBarL   = "file://左侧边栏.json"
+
+//右侧菜单栏目地址
+public let URLLayoutSideBarR   = "file://layout_sideR.json"
+
+
+/*********************************************************************/
+
+/*
+*   APP 数据接口
+*
+*/
+
+//public let KURLRoot             = "http://c.m.163.com/"
+//
+//public let KURLAppHeadLine        =  KURLRoot + "nc/article/headline/T1348647853363/0-20.html"
+//
+////public let KURLAppHomeNews      =  "http://apis.baidu.com/showapi_open_bus/channel_news/search_news"
+//
+//public let KURLAppMedia           =  KURLRoot + "nc/video/home/0-10.html"
+
+public let KURLRoot             = "http://api.fanfou.com/"
+
+public let KURLAppHomeTimeLine        =  KURLRoot + "statuses/home_timeline.json?since_id=lg_gpfdMeJQ&count=20&format=html"
+
+public let KURLAppDiscoverTimeLine    =  KURLRoot + "statuses/public_timeline.json?count=60&format=html"
+
+public let KURLAppAccountInfo         =  KURLRoot + "account/verify_credentials.json"
+
+public let KURLAppUpLoad              =  KURLRoot + "statuses/update.json"
+
+public let KURLAppDelete              =  KURLRoot + "statuses/destroy.json"
+
+public let KURLAppUpLoadWithImage     =  KURLRoot + "photos/upload.json"
+
+public let KURLAppFavorites           =  KURLRoot + "favorites/create/id.json"
+
+public let KURLAppUnFavorites           =  KURLRoot + "favorites//destroy/id.json"
+/*********************************************************************/

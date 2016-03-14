@@ -1,0 +1,27 @@
+{
+    "layout": 3,
+    "datas": [
+          {
+              "title": "动态",
+              "class" : "UIHomeViewController",
+              "icon" : "tabbar_icon_news_normal",
+              "icon_s" : "tabbar_icon_news_highlight",
+              "url": "file://layout_home.json"
+          },
+          {
+              "title": "发现",
+              "class" : "UIMediaViewController",
+              "icon" : "tabbar_icon_media_normal",
+              "icon_s" : "tabbar_icon_media_highlight",
+              "url": "file://layout_home.json"
+          }
+          ,
+          {
+              "title": "我的",
+              "class" : "UIHomeViewController",
+              "icon" : "tabbar_icon_me_normal",
+              "icon_s" : "tabbar_icon_me_highlight",
+              "url": "file://layout_home.json"
+          }
+      ]
+}
