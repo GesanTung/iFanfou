@@ -1937,9 +1937,9 @@
 					"$(PROJECT_DIR)/iFanfou/Vendors/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/iFanfou/Vendors/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChuanBao.GuanCha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tung.fanfou;
 				PRODUCT_NAME = iFanfou;
-				PROVISIONING_PROFILE = "993a1ccb-4da7-4607-bf95-3dd74d9e8f6f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iFanfou/iPhoenix/GT-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1972,9 +1972,9 @@
 					"$(PROJECT_DIR)/iFanfou/Vendors/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/iFanfou/Vendors/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChuanBao.GuanCha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tung.fanfou;
 				PRODUCT_NAME = iFanfou;
-				PROVISIONING_PROFILE = "993a1ccb-4da7-4607-bf95-3dd74d9e8f6f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iFanfou/iPhoenix/GT-Bridging-Header.h";
 			};
 			name = Release;

@@ -6,10 +6,12 @@
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "992FDBFC20A201ABF1B95CA86A0DE34E31738294" : 0,
     "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C23EC1C9-88B9-41AE-9305-095A4B85C3BA",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "992FDBFC20A201ABF1B95CA86A0DE34E31738294" : "",
     "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505" : "ifanfou\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "iFanfou",
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/603482184%40qq.com@code.taobao.org\/svn\/fanfou",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0bc992c5-4cd0-4bf0-bcaa-62b2dc378fc2++505"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/GesanTung\/iFanfou.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "992FDBFC20A201ABF1B95CA86A0DE34E31738294"
     }
   ]
 }
