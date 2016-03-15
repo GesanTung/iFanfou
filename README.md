@@ -16,4 +16,4 @@
 请大家前往饭否网注册账号或者登入我的测试账号
 测试账号：tungleungs@gmail.com  密码：gesan
 
-如有疑问联系 mail:tungleungs@gmail.com qq:603482184  qq群：383536247
+如有疑问联系 mail:tungleungs@gmail.com qq:603482184
