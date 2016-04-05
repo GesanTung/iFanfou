@@ -1,6 +1,6 @@
 # iFanfou
 ![app icon](https://github.com/GesanTung/iFanfou/blob/master/ifanfou/iFanfou/Assets.xcassets/AppIcon.appiconset/Icon-60%402x.png)
-##swift 版 iOS 饭否客户端
+##swift 版 iOS 饭否客户端 源码
 
 ![app preview](https://github.com/GesanTung/iFanfou/blob/master/ifanfou/fanfou1gif.gif)
 
