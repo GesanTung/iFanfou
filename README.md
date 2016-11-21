@@ -16,4 +16,6 @@
 请大家前往饭否网注册账号或者登入我的测试账号
 测试账号：tungleungs@gmail.com  密码：gesan
 
+ps：swift 版本为 2.1 ，如有 适配过 2.3 或 3.0 的开发者，请pr，3q；另外有时间或做适配，增加新功能，改进设计
+
 如有疑问联系 mail:tungleungs@gmail.com qq:603482184
